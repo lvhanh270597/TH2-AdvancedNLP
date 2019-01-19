@@ -304,13 +304,13 @@ sen(X) --> np(Y), vp(Z), {
 	not(empty_list(CS))
 }.
 
-show(S, np) :- np(X, S, []), g_display(X).
-show(S, nn) :- nn(X, S, []), g_display(X).
-show(S, nnp) :- nnp(X, S, []), g_display(X).
-show(S, unn) :- unn(X, S, []), g_display(X).
-show(S, vp) :- vp(X, S, []), g_display(X).
-show(S, sen) :- sen(X, S, []), g_display(X).
-show(S, vb) :- vb(X, S, []), g_display(X).
+show(S, np) :- split_string(S, ' ', '', L), np(X, L, []), g_display(X).
+show(S, nn) :- split_string(S, ' ', '', L), nn(X, L, []), g_display(X).
+show(S, nnp) :- split_string(S, ' ', '', L), nnp(X, L, []), g_display(X).
+show(S, unn) :- split_string(S, ' ', '', L), unn(X, L, []), g_display(X).
+show(S, vp) :- split_string(S, ' ', '', L), vp(X, L, []), g_display(X).
+show(S, sen) :- split_string(S, ' ', '', L), sen(X, L, []), g_display(X).
+show(S, vb) :- split_string(S, ' ', '', L), vb(X, L, []), g_display(X).
 
 /**
 np(X) --> prp(Y), {
