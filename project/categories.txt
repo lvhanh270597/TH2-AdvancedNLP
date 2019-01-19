@@ -7,7 +7,7 @@ cấp hai : nn level student
 tiếng : nn language country
 hai : cd count animal people
 con : unn none animal
-khôn : adj smart animal people
+khôn : adj smart animal
 dạy : vb none woman,student
 anh : nn man name
 Anh : nn country
@@ -22,17 +22,17 @@ sủa : vb none animal,time
 nữ tính : adj kind_person woman
 nuôi : vb none people,animal
 họ : prp people
-rất : rb
-người : nn people
+rất : rb none
+người : nn human
 cô dâu : nn woman
 là : vb none woman,woman
 là : vb none man,man
 là : vb none thing,dog
 với : cc none talk,woman
 chó : nn animal
-nói chuyện: vb talk man,woman
-qua : cc none language,language
-này : det none
+nói chuyện : vb talk people,people
+qua : cc language,language
+này : nn none
 một : det none animal
 Hùng : nnp name
 mỗi : det often time

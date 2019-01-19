@@ -27,7 +27,6 @@ np(X) --> nn(Y), {
 		)..
 		sem~(
 			cat~C..
-			subcat~SC..
 			head~H
 		)
 	),
@@ -37,7 +36,26 @@ np(X) --> nn(Y), {
 		)..
 		sem~(
 			cat~C..
-			subcat~SC..
+			head~H
+		)
+	)
+}.
+np(X) --> prp(Y), {
+	X = (
+		syn~(
+			cat~np
+		)..
+		sem~(
+			cat~C..
+			head~H
+		)
+	),
+	Y = (
+		syn~(
+			cat~prp
+		)..
+		sem~(
+			cat~C..
 			head~H
 		)
 	)
@@ -49,7 +67,6 @@ np(X) --> nnp(Y), {
 		)..
 		sem~(
 			cat~C..
-			subcat~SC..
 			head~H
 		)
 	),
@@ -59,27 +76,22 @@ np(X) --> nnp(Y), {
 		)..
 		sem~(
 			cat~C..
-			subcat~SC..
 			head~H
 		)
 	)
 }.
 np(X) --> nn(Y), nnp(Z), {
 	X = (
-		syn~(
-			cat~np
-		)..
+		syn~( cat~np )..
 		sem~(
 			cat~C..
-			subcat~SC..
+			arg0~C0..
 			head~SemNN..
 			comp~SemNNP
 		)
 	),
 	Y = (
-		syn~(
-			cat~nn
-		)..
+		syn~( cat~nn )..
 		sem~SemNN
 	),
 	Z = (
@@ -89,24 +101,18 @@ np(X) --> nn(Y), nnp(Z), {
 		sem~SemNNP
 	), 
 	SemNN = (		
-		cat~C1..
-		subcat~SC1
+		cat~C..
+		arg0~C0
 	),
 	SemNNP = (
-		cat~C2..
-		subcat~SC2
-	),
-	intersect(C1, C2, C),
-	intersect(SC1, SC2, SC),
-	not(empty_list(C)),
-	not(empty_list(SC))
+		cat~C0
+	)
 }.
 np(X) --> unn(Y), nn(Z), {
 	X = (
 		syn~( cat~np )..
 		sem~(
 			cat~C..
-			subcat~SC..
 			head~SemUNN..
 			comp~SemNN
 		)
@@ -121,24 +127,17 @@ np(X) --> unn(Y), nn(Z), {
 		sem~SemNN
 	),
 	SemNN = (
-		cat~C1..
-		subcat~SC1
+		cat~C
 	), 
 	SemUNN = (
-		cat~C2..
-		subcat~SC2
-	),
-	intersect(C1, C2, C),
-	intersect(SC1, SC2, SC),
-	not(empty_list(C)),
-	not(empty_list(SC))
+		arg0~C
+	)
 }.
 np(X) --> cd(Y), np(Z), {
 	X = (
 		syn~( cat~np )..
 		sem~(
 			cat~C..
-			subcat~SC..
 			head~SemNP..
 			comp~SemCD
 		)
@@ -156,104 +155,342 @@ np(X) --> cd(Y), np(Z), {
 		sem~SemNP
 	), 
 	SemNP = (		
-		cat~C1..
-		subcat~SC1
+		cat~C
 	),
 	SemCD = (
-		cat~C2..
-		subcat~SC2
-	),
-	intersect(C1, C2, C),
-	intersect(SC1, SC2, SC),
-	not(empty_list(C)),
-	not(empty_list(SC))
+		arg0~C
+	)
 }.
 
-vp(X) --> md(_), vb(Y), np(Z), {
-	X = ( 
+np(X) --> np2(Y), pp(Z), {
+	X = (
 		syn~(
-			cat~vp
+			cat~np
 		)..
 		sem~(
 			cat~C..
-			subcat~SC..
-			arg1~SemNP..
-			head~SemVB
+			head~SemNP..
+			comp~SemPP
 		)
+	),
+	Y = (
+		sym~(
+			cat~np
+		)..
+		sem~SemNP
+	),
+	Z = (
+		syn~(
+			cat~pp
+		)..
+		sem~SemPP
 	), 
+	SemNP = (		
+		cat~C
+	)
+}.
 
+np2(X) --> nn(Y), {
+	X = (
+		syn~(
+			cat~np
+		)..
+		sem~(
+			cat~C..
+			head~H
+		)
+	),
 	Y = (
 		syn~(
-			cat~vb
+			cat~nn
 		)..
-		sem~SemVB
+		sem~(
+			cat~C..
+			head~H
+		)
+	)
+}.
+np2(X) --> prp(Y), {
+	X = (
+		syn~(
+			cat~np
+		)..
+		sem~(
+			cat~C..
+			head~H
+		)
 	),
-
+	Y = (
+		syn~(
+			cat~prp
+		)..
+		sem~(
+			cat~C..
+			head~H
+		)
+	)
+}.
+np2(X) --> nnp(Y), {
+	X = (
+		syn~(
+			cat~np
+		)..
+		sem~(
+			cat~C..
+			head~H
+		)
+	),
+	Y = (
+		syn~(
+			cat~nn
+		)..
+		sem~(
+			cat~C..
+			head~H
+		)
+	)
+}.
+np2(X) --> nn(Y), nnp(Z), {
+	X = (
+		syn~( cat~np )..
+		sem~(
+			cat~C..
+			arg0~C0..
+			head~SemNN..
+			comp~SemNNP
+		)
+	),
+	Y = (
+		syn~( cat~nn )..
+		sem~SemNN
+	),
+	Z = (
+		syn~(
+			cat~nnp
+		)..
+		sem~SemNNP
+	), 
+	SemNN = (		
+		cat~C..
+		arg0~C0
+	),
+	SemNNP = (
+		cat~C0
+	)
+}.
+np2(X) --> unn(Y), nn(Z), {
+	X = (
+		syn~( cat~np )..
+		sem~(
+			cat~C..
+			head~SemUNN..
+			comp~SemNN
+		)
+	),
+	Y = (
+		syn~( cat~unn )..
+		sem~SemUNN
+	)
+	,
+	Z = (
+		syn~( cat~nn )..
+		sem~SemNN
+	),
+	SemNN = (
+		cat~C
+	), 
+	SemUNN = (
+		arg0~C
+	)
+}.
+np2(X) --> cd(Y), np(Z), {
+	X = (
+		syn~( cat~np )..
+		sem~(
+			cat~C..
+			head~SemNP..
+			comp~SemCD
+		)
+	),
+	Y = (
+		syn~(
+			cat~cd
+		)..
+		sem~SemCD
+	),
 	Z = (
 		syn~(
 			cat~np
 		)..
 		sem~SemNP
+	), 
+	SemNP = (		
+		cat~C
+	),
+	SemCD = (
+		arg0~C
+	)
+}.
+
+pp(X) --> in(Y), np2(Z), {
+	X = (
+		syn~(
+			cat~pp
+		)..
+		sem~(
+			cat~C..
+			head~SemIN..
+			comp~SemNP
+		)
+	),
+
+	Y = (
+		syn~(
+			cat~in
+		)..
+		sem~SemIN
+	),
+	Z = (
+		sem~SemNP
+	), 
+	SemIN = (
+		arg1~C
 	),
 	SemNP = (
-		cat~C1..
-		subcat~SC1
+		cat~C
+	)
+}.
+
+advp(X) --> det(Y), nn(Z), {
+	X = (
+		syn~(
+			cat~advp
+		)..
+		sem~(
+			cat~C0..
+			head~SemDET..
+			comp~SemNN
+		)
+	),
+	Y = (
+		syn~(
+			cat~det
+		)..
+		sem~SemDET
+	),
+	Z = (
+		syn~(
+			cat~nn
+		)..
+		sem~SemNN
+	), 
+	SemDET = (
+		cat~C0..
+		arg1~C
+	),
+	SemNN = (
+		cat~C
+	)
+}.
+
+vp(X) --> rb(_), vb(Y), np(Z), {
+	X = ( 
+		syn~( cat~vp )..
+		sem~(
+			cat~C..
+			arg0~C0..
+			arg1~C1..
+			arg1_sem~SemNP..
+			head~SemVB
+		)
+	), 
+
+	Y = (
+		syn~( cat~vb )..
+		sem~SemVB
+	),
+
+	Z = (
+		syn~( cat~np )..
+		sem~SemNP
+	),
+	SemNP = (
+		cat~C1
 	),
 	SemVB = (
-		cat~C2..
-		subcat~SC2
-	),
-	intersect(C1, C2, C),
-	intersect(SC1, SC2, SC),
-	not(empty_list(C)),
-	not(empty_list(SC))
+		cat~C..
+		arg0~C0..
+		arg1~C1
+	)
 }.
+
 vp(X) --> vb(Y), np(Z), {
 	X = ( 
-		syn~(
-			cat~vp
-		)..
+		syn~( cat~vp )..
 		sem~(
 			cat~C..
-			subcat~SC..
-			arg1~SemNP..
+			arg0~C0..
+			arg1~C1..
+			arg1_sem~SemNP..
 			head~SemVB
 		)
 	), 
 
 	Y = (
-		syn~(
-			cat~vb
-		)..
+		syn~( cat~vb )..
 		sem~SemVB
 	),
 
 	Z = (
-		syn~(
-			cat~np
-		)..
+		syn~( cat~np )..
 		sem~SemNP
 	),
 	SemNP = (
-		cat~C1..
-		subcat~SC1
+		cat~C1
 	),
 	SemVB = (
-		cat~C2..
-		subcat~SC2
-	),
-	intersect(C1, C2, C),
-	intersect(SC1, SC2, SC),
-	not(empty_list(C)),
-	not(empty_list(SC))
+		cat~C..
+		arg0~C0..
+		arg1~C1
+	)
 }.
 
+vp(X) --> vb(Y), advp(Z), {
+	X = ( 
+		syn~( cat~vp )..
+		sem~(
+			cat~C..
+			arg0~C0..
+			arg1~C1..
+			arg1_sem~SemADVP..
+			head~SemVB
+		)
+	), 
+
+	Y = (
+		syn~( cat~vb )..
+		sem~SemVB
+	),
+
+	Z = (
+		syn~( cat~advp )..
+		sem~SemADVP
+	),
+	SemADVP = (
+		cat~C1
+	),
+	SemVB = (
+		cat~C..
+		arg0~C0..
+		arg1~C1
+	)
+}.
 
 sen(X) --> np(Y), vp(Z), {
 	X = (
 		sem~(
 			nsub~SemNP..
-			nobj~Arg1..
+			dobj~Arg1..
 			head~Head
 		)
 	),
@@ -263,19 +500,13 @@ sen(X) --> np(Y), vp(Z), {
 	Z = ( sem~SemVP ),
 
 	SemNP = (
-		cat~C1..
-		subcat~SC1
+		cat~C0
 	),
 	SemVP = (
 		head~Head..
-		cat~C2..
-		subcat~SC2..
-		arg1~Arg1
-	), 
-	intersect(C1, C2, C),
-	intersect(SC1, SC2, SC),
-	not(empty_list(C)),
-	not(empty_list(SC))
+		arg1_sem~Arg1..
+		arg0~C0
+	)
 }.
 sen(X) --> np(Y), vp(Z), {
 	X = (
@@ -311,6 +542,8 @@ show(S, unn) :- split_string(S, ' ', '', L), unn(X, L, []), g_display(X).
 show(S, vp) :- split_string(S, ' ', '', L), vp(X, L, []), g_display(X).
 show(S, sen) :- split_string(S, ' ', '', L), sen(X, L, []), g_display(X).
 show(S, vb) :- split_string(S, ' ', '', L), vb(X, L, []), g_display(X).
+show(S, pp) :- split_string(S, ' ', '', L), pp(X, L, []), g_display(X).
+show(S, advp) :- split_string(S, ' ', '', L), advp(X, L, []), g_display(X).
 
 /**
 np(X) --> prp(Y), {
@@ -459,37 +692,6 @@ np(X) --> np(Y), adjp(Z), {
 		sem~SemADJP
 	)
 }.
-
-np(X) --> np(Y), pp(Z), {
-	X = (
-		syn~(
-			cat~np
-		)..
-		sem~(
-			cat~C..
-			subcat~SC..
-			head~SemNP..
-			comp~SemPP
-		)
-	),
-	Y = (
-		sym~(
-			cat~np
-		)..
-		sem~SemNP
-	),
-	Z = (
-		syn~(
-			cat~pp
-		)..
-		sem~SemPP
-	), 
-	SemNP = (		
-		cat~C..
-		subcat~SC
-	)
-}.
-
 adjp(X) --> jj(Y), {
 	X = (
 		syn~(

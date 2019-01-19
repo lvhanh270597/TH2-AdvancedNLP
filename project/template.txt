@@ -1,0 +1,9 @@
+tu_loai(X) --> words, {
+	X = (
+		syn~( cat~tu_loai )..
+		sem~(
+			cat~CATs..ARGs
+			head~words
+		)
+	)
+}.
