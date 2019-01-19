@@ -1,14 +1,14 @@
-thông dịch : vb none language,language
+thông dịch : vb none man,language,language
 sáng : nn time often
-sẽ : rb schedule none
-thường : rb repeat none
+sẽ : rb schedule
+thường : rb repeat
 quen : vb none people,people,reason
 cấp hai : nn level student
 tiếng : nn language country
 hai : cd count animal people
 con : unn none animal
 khôn : adj smart animal people
-dạy : vb none person,student
+dạy : vb none woman,student
 anh : nn man name
 Anh : nn country
 Việt : nn country
@@ -17,22 +17,22 @@ của : in none animal,people
 vì : cc reason
 nó : prp thing
 chú rể : nn man
-huyền đề : nn none animal
+huyền đề : nn kind_animal animal
 sủa : vb none animal,time
-nữ tính : adj body woman
+nữ tính : adj kind_person woman
 nuôi : vb none people,animal
-họ : people
+họ : prp people
 rất : rb
-người : nn human
+người : nn people
 cô dâu : nn woman
 là : vb none woman,woman
 là : vb none man,man
 là : vb none thing,dog
 với : cc none talk,woman
 chó : nn animal
-nói chuyện: vb talk people,people
-qua : cc language,language
-này : nn none
+nói chuyện: vb talk man,woman
+qua : cc none language,language
+này : det none
 một : det none animal
 Hùng : nnp name
 mỗi : det often time

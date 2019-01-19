@@ -1,30 +1,45 @@
 Cho danh sách các câu sau:
+
 1) anh Hùng sẽ là chú rể
+
 2) chị Hoa sẽ là cô dâu
+
 3) hai người nuôi một con chó
-4) con chó của họ thường sủa mỗi sáng
+
+4) con chó của họ thường sủa vào mỗi sáng
+
 5) anh Hùng thường nói chuyện với chị Hoa.
+
 6) con chó này rất khôn.
+
 7) nó là con chó huyền đề
+
 8) chị Hoa dạy học sinh cấp hai
+
 9) anh Hùng thông dịch tiếng Anh qua tiếng Việt
+
 10) anh Hùng quen chị Hoa vì chị rất nữ tính.
+
 Lưu ý:
+
 - "huyền đề" có thể sử dụng như từ ghép và từ loại là danh từ.
+
 - "thông dịch" có thể sử dụng như từ ghép và từ loại là động từ.
+
 - "nữ tính"  có thể sử dụng như từ ghép và từ loại là tính từ.
+
 Yêu cầu: Làm việc theo nhóm từ 2 đến 3 người với các nội dung sau:
-a) Xác định các nét nghĩa cho các từ vựng của tất cả các câu trên.
-b) Xác định cấu trúc đặc trưng của các từ vựng.
-c) Xây dựng luật sản sinh theo văn phạm UBG để phân tích các câu trên sao cho đảm bảo các quan hệ:
-- Chủ từ và tân từ trong trường hợp động từ là: anh Hùng - chú rể, chị Hoa - cô dâu.
+
+a) Xây dựng luật sản sinh theo văn phạm UBG để phân tích các câu trên sao cho đảm bảo các quan hệ:
+
+- Chủ từ và tân từ trong trường hợp động từ "là": anh Hùng - chú rể, chị Hoa - cô dâu.
+
 - Danh từ và danh từ: cô - dâu, chú - rể, con - chó
+
 - Danh từ và tính từ: chị - nữ tính
+
 - Động từ và tân từ: thông dịch - tiếng Anh, dạy - học sinh
+
 - Chủ từ và động từ: anh Hùng - nói chuyện, con chó - sủa
-d) Thử nghiệm phân tích 10 câu trên. Nhận xét kết quả (có sai ngữ nghĩa hay cấu trúc không? nếu có thì vì sao?)
-e) Cho biết 6 câu mở rộng nhưng không đúng ngữ nghĩa từ văn phạm đã xây dựng. Cho biết lý do có 6 câu này.
--------------
-Kết quả nộp:
-- File báo báo các nội dung trên (PDF hoặc DOCX)
-- Chương trình prolog chứa văn phạm UBG đã xác định (PL).
+
+b) Thử nghiệm phân tích 10 câu trên. Nhận xét kết quả (có sai ngữ nghĩa hay cấu trúc không? nếu có thì vì sao?)
