@@ -8,31 +8,33 @@ tiếng : nn language country
 hai : cd count animal people
 con : unn none animal
 khôn : adj smart animal people
-dạy : [people ==> student]
-anh : man
-việt : country
-học sinh : student
-của : [animal, people]
-vì : [reason]
-nó : [everything]
-chú rể : man
-chuyện : story
-huyền đề : dog
-sủa : [dog]
-nữ tính : woman
-nuôi : [people --> animal]
+dạy : vb none person,student
+anh : nn man name
+Anh : nn country
+Việt : nn country
+học sinh : nn student
+của : in none animal,people
+vì : cc reason
+nó : prp thing
+chú rể : nn man
+huyền đề : nn none animal
+sủa : vb none animal,time
+nữ tính : adj body woman
+nuôi : vb none people,animal
 họ : people
-rất : []
-người : people
-cô dâu : woman
-là : [people, animal ==> animal, people]
-với : []
-chó :  dog
-nói : [people, people, story]
-qua : [language ==> language]
-này : []
-một : [animal, people]
-hùng : people
-mỗi : often [people, animal, story, day]
-chị : woman
-hoa : people
+rất : rb
+người : nn human
+cô dâu : nn woman
+là : vb none woman,woman
+là : vb none man,man
+là : vb none thing,dog
+với : cc none talk,woman
+chó : nn animal
+nói chuyện: vb talk people,people
+qua : cc language,language
+này : nn none
+một : det none animal
+Hùng : nnp name
+mỗi : det often time
+chị : nn woman name
+Hoa : nnp name
