@@ -20,6 +20,57 @@ intersect(L, [X | T], [X | Y]) :- in(X, L), intersect(L, T, Y), !.
 intersect(L, [X | T], Y) :- not(in(X, L)), intersect(L, T, Y).
 
 
+adjp(X) --> jj(Y), {
+	X = (
+		syn~(
+			cat~adjp
+		)..
+		sem~(
+			cat~C..
+			head~SemJJ
+		)
+	), 
+	Y = (
+		syn~(
+			cat~jj
+		)..
+		sem~SemJJ
+	), 
+	SemJJ = (
+		cat~C
+	)
+}.
+
+adjp(X) --> rb(Y), jj(Z), {
+	X = (
+		syn~(
+			cat~adjp
+		)..
+		sem~(
+			cat~C..
+			arg0~C0..
+			head~SemJJ..
+			comp~SemRB
+		)
+	), 
+	Y = (
+		syn~(
+			cat~rb
+		)..
+		sem~SemRB
+	),
+	Z = (
+		syn~(
+			cat~jj
+		)..
+		sem~SemJJ
+	), 
+	SemJJ = (
+		cat~C..
+		arg0~C0
+	)
+}.
+
 np(X) --> nn(Y), {
 	X = (
 		syn~(
@@ -190,6 +241,34 @@ np(X) --> np2(Y), pp(Z), {
 	)
 }.
 
+np(X) --> nn(Y), np(Z), {
+	X = (
+		syn~(
+			cat~np
+		)..
+		sem~(
+			cat~C..
+			head~SemNN..
+			comp~SemNP
+		)
+	),
+	Y = (
+		sym~(
+			cat~nn
+		)..
+		sem~SemNN
+	),
+	SemNN = (		
+		cat~C
+	),
+	Z = (
+		syn~(
+			cat~np
+		)..
+		sem~SemNP
+	)
+}.
+
 np2(X) --> nn(Y), {
 	X = (
 		syn~(
@@ -331,6 +410,33 @@ np2(X) --> cd(Y), np(Z), {
 		arg0~C
 	)
 }.
+np2(X) --> nn(Y), np2(Z), {
+	X = (
+		syn~(
+			cat~np
+		)..
+		sem~(
+			cat~C..
+			head~SemNN..
+			comp~SemNP
+		)
+	),
+	Y = (
+		sym~(
+			cat~nn
+		)..
+		sem~SemNN
+	),
+	SemNN = (		
+		cat~C
+	),
+	Z = (
+		syn~(
+			cat~np
+		)..
+		sem~SemNP
+	)
+}.
 
 pp(X) --> in(Y), np2(Z), {
 	X = (
@@ -424,6 +530,37 @@ vp(X) --> rb(_), vb(Y), np(Z), {
 	)
 }.
 
+vp(X) --> rb(_), vb(Y), pp(Z), {
+	X = ( 
+		syn~( cat~vp )..
+		sem~(
+			cat~C..
+			arg0~C0..
+			arg1~C1..
+			arg1_sem~SemPP..
+			head~SemVB
+		)
+	), 
+
+	Y = (
+		syn~( cat~vb )..
+		sem~SemVB
+	),
+
+	Z = (
+		syn~( cat~pp )..
+		sem~SemPP
+	),
+	SemPP = (
+		cat~C1
+	),
+	SemVB = (
+		cat~C..
+		arg0~C0..
+		arg1~C1
+	)
+}.
+
 vp(X) --> vb(Y), np(Z), {
 	X = ( 
 		syn~( cat~vp )..
@@ -455,7 +592,7 @@ vp(X) --> vb(Y), np(Z), {
 	)
 }.
 
-vp(X) --> vb(Y), advp(Z), {
+vp(X) --> rb(_), vb(Y), advp(Z), {
 	X = ( 
 		syn~( cat~vp )..
 		sem~(
@@ -483,6 +620,96 @@ vp(X) --> vb(Y), advp(Z), {
 		cat~C..
 		arg0~C0..
 		arg1~C1
+	)
+}.
+
+sbar(X) --> np(Y), adjp(Z), {
+	X = (
+		syn~( cat ~ sbar)..
+		sem~(
+			nsub~SemNP..
+			head~Head
+		)
+	),
+	Y = ( sem~SemNP ),
+	Z = ( sem~SemADJP ),
+
+	SemNP = (
+		cat~C0
+	),
+	SemADJP = (
+		head~Head..
+		arg0~C0
+	)
+}.
+
+sen2(X) --> np(Y), vp(Z), {
+	X = (
+		sem~(
+			nsub~SemNP..
+			dobj~Arg1..
+			head~Head
+		)
+	),
+
+	Y = ( sem~SemNP ),
+
+	Z = ( sem~SemVP ),
+
+	SemNP = (
+		cat~C0
+	),
+	SemVP = (
+		head~Head..
+		arg1_sem~Arg1..
+		arg0~C0
+	)
+}.
+sen2(X) --> np(Y), vp(Z), {
+	X = (
+		sem~(
+			nsub~SemNP..
+			nobj~Arg1..
+			head~Head
+		)
+	),
+
+	Y = ( sem~SemNP ),
+
+	Z = ( sem~SemVP ),
+
+	SemNP = (
+		cat~CS1		
+	),
+	SemVP = (
+		head~Head..		
+		arg1~Arg1
+	), 
+	Head = (
+		cat_sub~CS2
+	),
+	intersect(CS1, CS2, CS),
+	not(empty_list(CS))
+}.
+
+sen(X) --> sen2(Y), cc(Z), sbar(T), {
+	X = (
+		sem~(
+			cat~C..
+			nsub~SemSEN..
+			dobj~SemSBAR
+		)
+	),
+	Y = (
+		sem~SemSEN
+	),
+	Z = (
+		sem~(
+			cat~C
+		)
+	),
+	T = (
+		sem~SemSBAR
 	)
 }.
 
@@ -535,15 +762,20 @@ sen(X) --> np(Y), vp(Z), {
 	not(empty_list(CS))
 }.
 
-show(S, np) :- split_string(S, ' ', '', L), np(X, L, []), g_display(X).
-show(S, nn) :- split_string(S, ' ', '', L), nn(X, L, []), g_display(X).
-show(S, nnp) :- split_string(S, ' ', '', L), nnp(X, L, []), g_display(X).
-show(S, unn) :- split_string(S, ' ', '', L), unn(X, L, []), g_display(X).
-show(S, vp) :- split_string(S, ' ', '', L), vp(X, L, []), g_display(X).
-show(S, sen) :- split_string(S, ' ', '', L), sen(X, L, []), g_display(X).
-show(S, vb) :- split_string(S, ' ', '', L), vb(X, L, []), g_display(X).
-show(S, pp) :- split_string(S, ' ', '', L), pp(X, L, []), g_display(X).
-show(S, advp) :- split_string(S, ' ', '', L), advp(X, L, []), g_display(X).
+show(S, np) :- split_string(S, ' ', '', L), np(X, L, []), g_display(X), !.
+show(S, nn) :- split_string(S, ' ', '', L), nn(X, L, []), g_display(X), !.
+show(S, sbar) :- split_string(S, ' ', '', L), sbar(X, L, []), g_display(X), !.
+show(S, nnp) :- split_string(S, ' ', '', L), nnp(X, L, []), g_display(X), !.
+show(S, unn) :- split_string(S, ' ', '', L), unn(X, L, []), g_display(X), !.
+show(S, in) :- split_string(S, ' ', '', L), in(X, L, []), g_display(X), !.
+show(S, vp) :- split_string(S, ' ', '', L), vp(X, L, []), g_display(X), !.
+show(S, sen) :- split_string(S, ' ', '', L), sen(X, L, []), g_display(X), !.
+show(S, vb) :- split_string(S, ' ', '', L), vb(X, L, []), g_display(X), !.
+show(S, jj) :- split_string(S, ' ', '', L), jj(X, L, []), g_display(X), !.
+show(S, adjp) :- split_string(S, ' ', '', L), adjp(X, L, []), g_display(X), !.
+show(S, pp) :- split_string(S, ' ', '', L), pp(X, L, []), g_display(X), !.
+show(S, rb) :- split_string(S, ' ', '', L), rb(X, L, []), g_display(X), !.
+show(S, advp) :- split_string(S, ' ', '', L), advp(X, L, []), g_display(X), !.
 
 /**
 np(X) --> prp(Y), {
@@ -633,36 +865,6 @@ np(X) --> dt(Y), np(Z), {
 	)
 }.
 
-np(X) --> nn(Y), np(Z), {
-	X = (
-		syn~(
-			cat~np
-		)..
-		sem~(
-			cat~C..
-			subcat~SC..
-			head~SemNN..
-			comp~SemNP
-		)
-	),
-	Y = (
-		sym~(
-			cat~nn
-		)..
-		sem~SemNN
-	),
-	SemNN = (		
-		cat~C..
-		subcat~SC
-	),
-	Z = (
-		syn~(
-			cat~np
-		)..
-		sem~SemNP
-	)
-}.
-
 np(X) --> np(Y), adjp(Z), {
 	X = (
 		syn~(
@@ -724,36 +926,6 @@ nnp(X) --> [hùng], {
 			subcat~man..
 			head~hùng
 		)
-	)
-}.
-
-adjp(X) --> rb(Y), jj(Z), {
-	X = (
-		syn~(
-			cat~adjp
-		)..
-		sem~(
-			cat~C..
-			subcat~SC..
-			head~SemJJ..
-			comp~SemRB
-		)
-	), 
-	Y = (
-		syn~(
-			cat~rb
-		)..
-		sem~SemRB
-	),
-	Z = (
-		syn~(
-			cat~jj
-		)..
-		sem~SemJJ
-	), 
-	SemJJ = (
-		cat~C..
-		subcat~SC
 	)
 }.
 

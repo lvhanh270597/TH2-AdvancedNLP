@@ -3,8 +3,9 @@ vb(X) --> ["thông", "dịch"], {
 		syn~( cat~vb )..
 		sem~(
 			cat~none..
-			arg0~language..
+			arg0~man..
 			arg1~language..
+			arg2~language..
 			head~["thông", "dịch"]
 		)
 	)
@@ -46,9 +47,8 @@ vb(X) --> ["quen"], {
 		syn~( cat~vb )..
 		sem~(
 			cat~none..
-			arg0~people..
-			arg1~people..
-			arg2~reason..
+			arg0~man..
+			arg1~woman..
 			head~["quen"]
 		)
 	)
@@ -261,11 +261,11 @@ vb(X) --> ["sủa"], {
 	)
 }.
 
-adj(X) --> ["nữ", "tính"], {
+jj(X) --> ["nữ", "tính"], {
 	X = (
-		syn~( cat~adj )..
+		syn~( cat~jj )..
 		sem~(
-			cat~body..
+			cat~person..
 			arg0~woman..
 			head~["nữ", "tính"]
 		)
@@ -298,7 +298,7 @@ rb(X) --> ["rất"], {
 	X = (
 		syn~( cat~rb )..
 		sem~(
-			cat~CATs..
+			cat~none..
 			head~["rất"]
 		)
 	)
@@ -360,9 +360,9 @@ vb(X) --> ["là"], {
 	)
 }.
 
-cc(X) --> ["với"], {
+in(X) --> ["với"], {
 	X = (
-		syn~( cat~cc )..
+		syn~( cat~in )..
 		sem~(
 			cat~none..
 			arg0~talk..
@@ -387,18 +387,19 @@ vb(X) --> ["nói", "chuyện"], {
 		syn~( cat~vb )..
 		sem~(
 			cat~talk..
-			arg0~people..
-			arg1~people..
+			arg0~man..
+			arg1~woman..
 			head~["nói", "chuyện"]
 		)
 	)
 }.
 
-cc(X) --> ["qua"], {
+in(X) --> ["qua"], {
 	X = (
-		syn~( cat~cc )..
+		syn~( cat~in )..
 		sem~(
-			cat~language..
+			cat~none..
+			arg0~language..
 			head~["qua"]
 		)
 	)
