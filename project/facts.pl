@@ -1,4 +1,3 @@
-
 nn(X) --> [chu, re], {
 	X = (
 		syn~(
@@ -6,7 +5,6 @@ nn(X) --> [chu, re], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[man]..
 			head~[chu, re]
 		)
 	)
