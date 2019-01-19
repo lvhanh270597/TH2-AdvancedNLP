@@ -1,4 +1,3 @@
-
 nn(X) --> [chu, re], {
 	X = (
 		syn~(
@@ -6,7 +5,6 @@ nn(X) --> [chu, re], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[man]..
 			head~[chu, re]
 		)
 	)
@@ -18,7 +16,6 @@ nn(X) --> [co, dau], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[woman]..
 			head~[co, dau]
 		)
 	)
@@ -30,7 +27,6 @@ nn(X) --> [anh], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[man]..
 			head~anh
 		)
 	)
@@ -42,7 +38,6 @@ nn(X) --> [chi], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[woman]..
 			head~chi
 		)
 	)
@@ -52,7 +47,6 @@ nn(X) --> [nguoi], {
 		syn~( cat~nn )..
 		sem~(
 			cat~[person]..
-			subcat~[man, woman]..
 			head~nguoi
 		)
 	)
@@ -62,7 +56,6 @@ nn(X) --> [cho], {
 		syn~( cat~nn )..
 		sem~( 
 			cat~[animal]..
-			subcat~[dog]..
 			head~cho
 		)
 	)
@@ -73,7 +66,6 @@ unn(X) --> [con], {
 		syn~ ( cat~unn )..
 		sem~ (
 			cat~[animal]..
-			subcat~[dog]..
 			head~con
 		)
 	)
@@ -84,7 +76,6 @@ cd(X) --> [mot], {
 		syn~( cat~cd )..
 		sem~(
 			cat~[animal, person]..
-			subcat~[dog, woman, man]..
 			head~mot
 		)
 	)
@@ -94,7 +85,6 @@ cd(X) --> [hai], {
 		syn~( cat~cd )..
 		sem~(
 			cat~[animal, person]..
-			subcat~[dog, man, woman]..
 			head~hai
 		)
 	)
@@ -107,7 +97,6 @@ nnp(X) --> [hung], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[man]..
 			head~hung
 		)
 	)
@@ -119,7 +108,6 @@ nnp(X) --> [hoa], {
 		)..
 		sem~(
 			cat~[person]..
-			subcat~[woman]..
 			head~hoa
 		)
 	)
@@ -143,7 +131,6 @@ vb(X) --> [la], {
 		)..
 		sem~(
 			cat~[animal, person]..
-			subcat~[man, woman]..
 			head~la
 		)
 	)
@@ -154,7 +141,6 @@ vb(X) --> [nuoi], {
 		sem~(
 			cat_sub~[person]..
 			cat~[animal, person]..
-			subcat~[dog, man, woman]..
 			head~nuoi
 		)
 	)
