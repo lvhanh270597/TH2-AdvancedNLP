@@ -8,31 +8,3 @@ tiếng : nn language country
 hai : cd count animal people
 con : unn none animal
 khôn : adj smart animal people
-dạy : [people ==> student]
-anh : man
-việt : country
-học sinh : student
-của : [animal, people]
-vì : [reason]
-nó : [everything]
-chú rể : man
-chuyện : story
-huyền đề : dog
-sủa : [dog]
-nữ tính : woman
-nuôi : [people --> animal]
-họ : people
-rất : []
-người : people
-cô dâu : woman
-là : [people, animal ==> animal, people]
-với : []
-chó :  dog
-nói : [people, people, story]
-qua : [language ==> language]
-này : []
-một : [animal, people]
-hùng : people
-mỗi : often [people, animal, story, day]
-chị : woman
-hoa : people
