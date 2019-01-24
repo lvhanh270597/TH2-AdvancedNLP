@@ -70,7 +70,6 @@ adjp(X) --> rb(Y), jj(Z), {
 		arg0~C0
 	)
 }.
-
 np(X) --> nn(Y), {
 	X = (
 		syn~(
@@ -240,7 +239,24 @@ np(X) --> np2(Y), pp(Z), {
 		cat~C
 	)
 }.
-
+np(X) --> np2(Y), nn(Z),{
+	X = (
+			syn ~( cat~np)..
+			sem~( 
+				head~SemNP..
+				comp~SemNN..
+				arg1~C
+			)
+		),
+	Y = (
+			sem~SemNP
+			
+		),
+	SemNP = (cat~C),
+	Z = (
+			sem~SemNN
+		)
+}.
 np(X) --> nn(Y), np(Z), {
 	X = (
 		syn~(
@@ -410,6 +426,7 @@ np2(X) --> cd(Y), np(Z), {
 		arg0~C
 	)
 }.
+
 np2(X) --> nn(Y), np2(Z), {
 	X = (
 		syn~(
@@ -498,7 +515,7 @@ advp(X) --> det(Y), nn(Z), {
 		cat~C
 	)
 }.
-
+advp(X) --> rb(X).
 vp(X) --> rb(_), vb(Y), np(Z), {
 	X = ( 
 		syn~( cat~vp )..
@@ -530,9 +547,10 @@ vp(X) --> rb(_), vb(Y), np(Z), {
 	)
 }.
 
+vp(Z) --> advp(_), vb(Z).
 vp(X) --> rb(_), vb(Y), pp(Z), {
 	X = ( 
-		syn~( cat~vp )..
+		syn~(cat~vp)..
 		sem~(
 			cat~C..
 			arg0~C0..
@@ -643,6 +661,7 @@ sbar(X) --> np(Y), adjp(Z), {
 	)
 }.
 
+
 sen2(X) --> np(Y), vp(Z), {
 	X = (
 		sem~(
@@ -692,6 +711,29 @@ sen2(X) --> np(Y), vp(Z), {
 	not(empty_list(CS))
 }.
 
+sen(X) --> np(Y), vp(Z), {
+	X = (
+		sem~(
+			nsub~SemNP..
+			dobj~Arg1..
+			head~Head
+		)
+	),
+
+	Y = ( sem~SemNP ),
+
+	Z = ( sem~SemVP ),
+
+	SemNP = (
+		cat~C0
+	),
+	SemVP = (
+		head~Head..
+		arg1_sem~Arg1..
+		arg0~C0
+	)
+}.
+
 sen(X) --> sen2(Y), cc(Z), sbar(T), {
 	X = (
 		sem~(
@@ -717,11 +759,9 @@ sen(X) --> np(Y), vp(Z), {
 	X = (
 		sem~(
 			nsub~SemNP..
-			dobj~Arg1..
-			head~Head
+			head~SemVP
 		)
 	),
-
 	Y = ( sem~SemNP ),
 
 	Z = ( sem~SemVP ),
@@ -730,11 +770,12 @@ sen(X) --> np(Y), vp(Z), {
 		cat~C0
 	),
 	SemVP = (
-		head~Head..
-		arg1_sem~Arg1..
 		arg0~C0
 	)
 }.
+
+
+
 sen(X) --> np(Y), vp(Z), {
 	X = (
 		sem~(

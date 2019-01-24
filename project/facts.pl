@@ -120,12 +120,12 @@ adj(X) --> ["khôn"], {
 	)
 }.
 
-adj(X) --> ["khôn"], {
+vb(X) --> ["khôn"], {
 	X = (
-		syn~( cat~adj )..
+		syn~( cat~vb )..
 		sem~(
 			cat~smart..
-			arg0~people..
+			arg0~animal..
 			head~["khôn"]
 		)
 	)
@@ -136,7 +136,7 @@ vb(X) --> ["dạy"], {
 		syn~( cat~vb )..
 		sem~(
 			cat~none..
-			arg0~person..
+			arg0~woman..
 			arg1~student..
 			head~["dạy"]
 		)
